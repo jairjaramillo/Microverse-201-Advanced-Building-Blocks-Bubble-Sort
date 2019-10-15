@@ -1,11 +1,21 @@
 def bubble_sort(array)
+  # check the array is already sorted, if true, return array
+  # loop and sort the first time,
+  # check if the array is sorted correctly i.e as expected using recursion
+  # if it is not, sort again and check if it is sorted correctly as exected
+  
   (array.size - 1).times do |x|
     if array[x] > array[x + 1]
       array[x], array[x + 1] = array[x + 1], array[x]
     end
   end
+  (array.size - 1).times do |x|
+    if array[x] > array[x + 1]
+      bubble_sort(array)
+    end
+  end
   array
 end
 
-test_array = [5, 4, 1, 6, 9, 2]
+test_array = [4,3,78,2,0,2]
 puts bubble_sort(test_array)
