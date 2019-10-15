@@ -3,19 +3,48 @@ def bubble_sort(array)
   # loop and sort the first time,
   # check if the array is sorted correctly i.e as expected using recursion
   # if it is not, sort again and check if it is sorted correctly as exected
-  
+
   (array.size - 1).times do |x|
-    if array[x] > array[x + 1]
-      array[x], array[x + 1] = array[x + 1], array[x]
-    end
+    array[x], array[x + 1] = array[x + 1], array[x] if array[x] > array[x + 1]
   end
   (array.size - 1).times do |x|
-    if array[x] > array[x + 1]
-      bubble_sort(array)
-    end
+    bubble_sort(array) if array[x] > array[x + 1]
   end
+  # sort_check.call array
   array
 end
 
-test_array = [4,3,78,2,0,2]
+def bubble_sort_by(array)
+  # write a block
+  # the block should compare the two elements that was passed to it
+  (array.size - 1).times do |x|
+    check_num(array[x], array[x + 1])
+  end
+  (array.size - 1).times do |x|
+    # bubble_sort(array) if array[x] > array[x + 1]
+    bubble_sort(array) if check_sort(array[x], array[x + 1])
+  end
+end
+
+check_num = Proc.new do |left, right|
+  if left.length - right.length == 0
+    return 0
+  elsif left.length > right.length
+    left, right = right, left
+  end
+  # left.length - right.length
+end
+
+check_sort = Proc.new do |left, right|
+  if left.length - right.length == 0
+    return false
+  elsif left.length > right.length
+    return true
+  end
+end
+
+test_array = [4, 3, 78, 2, 0, 2]
 puts bubble_sort(test_array)
+
+test_array2 = ["hi","hello","hey"]
+puts bubble_sort_by(test_array2)
