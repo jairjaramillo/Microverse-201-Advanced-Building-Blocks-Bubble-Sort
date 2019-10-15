@@ -1,0 +1,11 @@
+def bubble_sort(array)
+  (array.size - 1).times do |x|
+    if array[x] > array[x + 1]
+      array[x], array[x + 1] = array[x + 1], array[x]
+    end
+  end
+  array
+end
+
+test_array = [5, 4, 1, 6, 9, 2]
+puts bubble_sort(test_array)
