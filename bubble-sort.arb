@@ -17,31 +17,31 @@ end
 def bubble_sort_by(array)
   # write a block
   # the block should compare the two elements that was passed to it
-  (array.size - 1).times do |x|
-    check_num(array[x], array[x + 1])
+  check_num = Proc.new do |left, right|
+    if left.length - right.length >= 0 
+      left, right = right, left
+    end
+  end
+  check_sort = Proc.new do |left, right|
+    if left.length - right.length == 0
+       false
+    elsif left.length > right.length
+       true
+    end
   end
   (array.size - 1).times do |x|
-    # bubble_sort(array) if array[x] > array[x + 1]
-    bubble_sort(array) if check_sort(array[x], array[x + 1])
+    elements = [array[x], array[x + 1]]
+    check_num.call elements
+  end
+  (array.size - 1).times do |x|
+    elements = [array[x], array[x + 1]]
+    bubble_sort_by(array) if check_sort.call elements 
   end
 end
 
-check_num = Proc.new do |left, right|
-  if left.length - right.length == 0
-    return 0
-  elsif left.length > right.length
-    left, right = right, left
-  end
-  # left.length - right.length
-end
 
-check_sort = Proc.new do |left, right|
-  if left.length - right.length == 0
-    return false
-  elsif left.length > right.length
-    return true
-  end
-end
+
+
 
 test_array = [4, 3, 78, 2, 0, 2]
 puts bubble_sort(test_array)
