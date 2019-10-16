@@ -39,10 +39,6 @@ def bubble_sort_by(array)
   end
 end
 
-
-
-
-
 test_array = [4, 3, 78, 2, 0, 2]
 puts bubble_sort(test_array)
 
