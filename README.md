@@ -13,3 +13,6 @@ Contributor:
 * Collins Ugwu: [Github](https://github.com/collinsugwu)
 
 * Jair Jaramillo: [Github](https://github.com/jairjy), [Twitter](https://twitter.com/jairjy)
+
+Github Link:
+[here](https://github.com/jairjy/Microverse-201-Advanced-Building-Blocks-Bubble-Sort)
